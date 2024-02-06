@@ -1,0 +1,24 @@
+#ifndef __FONT_TEXTURE_HLSLINC__
+#define __FONT_TEXTURE_HLSLINC__
+
+
+#define CHAR_WIDTH 16
+#define CHAR_COUNT (CHAR_WIDTH * CHAR_WIDTH)
+
+Texture2D _FontTex;
+SamplerState sampler_FontTex;
+
+float4 FontTexture_GetChar(float2 pos_uvc, float4 rect_uvc, uint char) {
+	float2 uv = (pos_uvc - rect_uvc.xy) / rect_uvc.zw;
+	if (any(bool4(uv < 0, uv > 1))) {
+		return float4(0, 0, 0, 0);
+	}
+
+	char %= CHAR_COUNT;
+	uint2 char_index = uint2(char % CHAR_WIDTH, (CHAR_WIDTH - 1) - char / CHAR_WIDTH);
+	uv = (uv + char_index) / CHAR_WIDTH;
+	return _FontTex.Sample(sampler_FontTex, uv);
+}
+
+
+#endif // __FONT_TEXTURE_HLSLINC__
