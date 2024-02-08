@@ -36,7 +36,6 @@ Shader "Unlit/Text" {
 
             uint _Text_Length;
             StructuredBuffer<uint> _Text;
-            float4 _FirstChar_Rect;
 
             v2f vert (appdata v) {
                 float2 uv = v.uv * float2(_Text_Length, 1);
@@ -50,13 +49,7 @@ Shader "Unlit/Text" {
             float4 frag (v2f i) : SV_Target {
                 float4 cmain = tex2D(_MainTex, i.uv);
 
-                float4 f = 0;
-                float4 rect = float4(-0.25, 0, 1, 1);
-                for (uint j = 0; j < _Text_Length; j++) {
-                    uint ch = _Text[j];
-                    f += FontTexture_GetChar(i.uv, rect, ch);
-                    rect.x += rect.z * 0.5;
-                }
+                float4 f = FontTexture_GetText(i.uv, _Text, _Text_Length);
                 float4 c = cmain * _Color;
                 c.a *= f.x;
                 return c;

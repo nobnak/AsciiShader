@@ -19,6 +19,16 @@ float4 FontTexture_GetChar(float2 pos_uvc, float4 rect_uvc, uint char) {
 	uv = (uv + char_index) / CHAR_WIDTH;
 	return _FontTex.Sample(sampler_FontTex, uv);
 }
+float4 FontTexture_GetText(float2 pos_uvc, StructuredBuffer<uint> text, uint textLength) {
+	float4 color = float4(0, 0, 0, 0);	
+    float4 rect = float4(-0.25, 0, 1, 1);
+	for (uint i = 0; i < textLength; i++) {
+		uint ch = text[i];
+		color += FontTexture_GetChar(pos_uvc, rect, ch);
+        rect.x += rect.z * 0.5;
+	}
+	return color;
+}
 
 
 #endif // __FONT_TEXTURE_HLSLINC__
