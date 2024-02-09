@@ -5,11 +5,11 @@
   },
   "name": "jp.nobnak.ascii_shader",
   "displayName": "ASCII Shader",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "samples": [],
   "dependencies": {
     "com.unity.mathematics": "1.2.6",
-    "com.unity.render-pipelines.core": "14.0.10",
+    "com.unity.render-pipelines.universal": "14.0.10",
     "jp.nobnak.gist2": "1.4.3"
   }
 }
