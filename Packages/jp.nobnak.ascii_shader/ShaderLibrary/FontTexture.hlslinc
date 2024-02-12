@@ -30,5 +30,10 @@ float4 FontTexture_GetText(float2 pos_uvc, StructuredBuffer<uint> text, uint tex
 	return color;
 }
 
+// 0-9, A-Z, a-z
+uint3 FontTexture_IndexOf(uint offset) {
+	return uint3(48, 65, 97) + offset % uint3(10, 26, 26);
+}
+
 
 #endif // __FONT_TEXTURE_HLSLINC__

@@ -59,7 +59,7 @@ Shader "Unlit/TextEffect" {
                 float4 f = 0;
                 code %= REPEAT;
                 for (uint j = 0; j < 2; j++) {
-                    int ch = CODE[1 - j] + code[1 - j];
+                    int ch = FontTexture_IndexOf(code[1 - j])[1-j];
                     f += FontTexture_GetChar(i.px, float4(offset_px, size, size), ch);
                     offset_px.x += 0.5 * size;
                 }
