@@ -5,7 +5,7 @@
   },
   "name": "jp.nobnak.ascii_shader",
   "displayName": "ASCII Shader",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "samples": [],
   "dependencies": {
     "com.unity.mathematics": "1.2.6",

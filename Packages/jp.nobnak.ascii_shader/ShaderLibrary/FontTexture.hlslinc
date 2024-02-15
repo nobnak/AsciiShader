@@ -29,6 +29,18 @@ float4 FontTexture_GetText(float2 pos_uvc, StructuredBuffer<uint> text, uint tex
 	}
 	return color;
 }
+float4 FontTexture_GetText4(float2 pos_uvc, uint4 text) {
+	float4 color = float4(0, 0, 0, 0);
+	float4 rect = float4(-0.25, 0, 1, 1);
+	color += FontTexture_GetChar(pos_uvc, rect, text.x);
+	rect.x += rect.z * 0.5;
+	color += FontTexture_GetChar(pos_uvc, rect, text.y);
+	rect.x += rect.z * 0.5;
+	color += FontTexture_GetChar(pos_uvc, rect, text.z);
+	rect.x += rect.z * 0.5;
+	color += FontTexture_GetChar(pos_uvc, rect, text.w);
+	return color;
+}
 
 // 0-9, A-Z, a-z
 uint3 FontTexture_IndexOf(uint offset) {
