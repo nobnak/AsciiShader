@@ -3,7 +3,6 @@ Shader "Unlit/Char" {
         _MainTex ("Main Texture", 2D) = "white" {}
         _Color ("Color", Color) = (1,1,1,1)
 
-        _FontTex ("Font Texture", 2D) = "white" {}
         _Char ("Char", Int) = 0
     }
     SubShader {
