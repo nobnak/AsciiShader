@@ -1,9 +1,6 @@
 using Gist2.Adapter;
-using System.Collections;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace AsciiShader {
